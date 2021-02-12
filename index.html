@@ -12,6 +12,32 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <h1>Taylor Tic Tac Toe</h1>
+      <main>
+        <div id="error-message">
+        </div>
+        <section id="auth-section">
+          <h2>Enter the Taylor Tic Tac Toe Zone!</h2>
+          <form id="sign-up">
+            <input name="credentials[email]" type="text" placeholder="an@example.email">
+            <input name="credentials[password]" type="password" placeholder="an example password">
+            <input name="credentials[password_confirmation]" type="password" placeholder="an example password">
+            <button>Have Some Nice Things!</button>
+          </form>
+            <form id="sign-in">
+              <input name="credentials[email]" type="text" placeholder="an@example.email">
+              <input name="credentials[password]" type="password" placeholder= "example password">
+              <button>Don't Leave a Blank Space</button>
+            </form>
+              <form id='change-password'>
+                <input type='password' name='passwords[old]' placeholder='Enter Old Password Here' required>
+                <input type='password' name='passwords[new]' placeholder='Enter New Password Here' required>
+                <button>Change Password</button>
+            </form>
+              <form id="sign-out">
+              <button>Taylor Out!</button>
+        </form>
+        </section>
+      </main>
     </body>
 </html>
