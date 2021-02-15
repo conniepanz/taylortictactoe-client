@@ -15,25 +15,24 @@ const signInSuccess = function (response) {
 const signInFailure = function (response) {
   $('#error-message').text('Sign in failed, try again')
 }
-const changePasswordSuccess = function (response) {
-  store.user = response.user
+const changePasswordSuccess = function () {
   $('#error-message').text('Your Password Has Been Changed')
 }
 const changePasswordFailure = function (response) {
   $('#error-message').text('Password failed')
 }
 const signOutSuccess = function () {
-  $('#message').text('Signed out successfully')
-  $('#message').removeClass()
-  $('#message').addClass('success')
+  $('#error-message').text('Signed out successfully')
+  $('#error-message').removeClass()
+  $('#error-message').addClass('success')
   $('form').trigger('reset')
   console.log('signOutSuccess ran and nothing was returned!')
 }
 
 const signOutFailure = function (error) {
-  $('#message').text('Error on sign out')
-  $('#message').removeClass()
-  $('#message').addClass('failure')
+  $('#error-message').text('Error on sign out')
+  $('#error-message').removeClass()
+  $('#error-message').addClass('failure')
   console.error('signOutFailure ran. Error is :', error)
 }
 
