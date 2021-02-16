@@ -1,1 +1,25 @@
 @import '~bootstrap/scss/bootstrap';
+
+body {
+  background: coral;
+}
+
+.box {
+height: 100px;
+background-color: cyan;
+border: 2px black solid;
+}
+
+.container {
+  padding: 20px;
+  margin: 20px;
+
+}
+
+h1{
+  color: cyan;
+}
+
+h2{
+  color: purple;
+}

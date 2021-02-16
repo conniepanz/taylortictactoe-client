@@ -32,7 +32,7 @@ const signOutSuccess = function () {
 const signOutFailure = function (error) {
   $('#error-message').text('Error on sign out')
   $('#error-message').removeClass()
-  $('#error-giigrmessage').addClass('failure')
+  $('#error-message').addClass('failure')
   console.error('signOutFailure ran. Error is :', error)
 }
 
