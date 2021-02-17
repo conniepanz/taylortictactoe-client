@@ -13,6 +13,6 @@ $(() => {
   $('#change-password').on('submit', authEvents.onChangePassword)
   $('#sign-out').on('submit', authEvents.onSignOut)
   $('#new-game').on('click', gameEvents.onNewGame)
-
+  $('.box').on('click', gameEvents.onGameBoardClick)
   // your JS code goes here
 })
