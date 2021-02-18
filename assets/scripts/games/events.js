@@ -8,6 +8,7 @@ const onNewGame = function (event) {
   api.newGame()
     .then(ui.onNewGameSuccess)
     .catch(ui.onNewGameFailure)
+  $('.box').show()
 }
 
 const onGameBoardClick = function (event) {

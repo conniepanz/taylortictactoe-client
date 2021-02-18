@@ -19,6 +19,7 @@ const onSignIn = function (event) {
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
+  $('#new-game').show()
 }
 const onChangePassword = function (event) {
   event.preventDefault()

@@ -8,11 +8,13 @@ const gameEvents = require('./games/events')
 // require('./example')
 
 $(() => {
+  $('#new-game').hide()
   $('#sign-up').on('submit', authEvents.onSignUp)
   $('#sign-in').on('submit', authEvents.onSignIn)
   $('#change-password').on('submit', authEvents.onChangePassword)
   $('#sign-out').on('submit', authEvents.onSignOut)
   $('#new-game').on('click', gameEvents.onNewGame)
+  $('.box').hide()
   $('.box').on('click', gameEvents.onGameBoardClick)
   // your JS code goes here
 })
