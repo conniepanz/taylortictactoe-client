@@ -1,7 +1,7 @@
 const config = require('../config')
 const store = require('../store')
 
-const newGame = function () {
+const createGame = function () {
   return $.ajax({
     method: 'POST',
     url: config.apiUrl + '/games/',
@@ -11,23 +11,25 @@ const newGame = function () {
     data: {}
   })
 }
-const clickedCell = function (index, value, over) {
+const updateGame = function (index, player, over) {
   return $.ajax({
-    url: config.apiUrl + '/games' + store.game._id,
+    url: config.apiUrl + '/games/' + store.game._id,
     method: 'PATCH',
     headers: {
       Authorization: 'Bearer ' + store.user.token
     },
-    game: {
-      cell: {
-        index: index,
-        value: value
-      },
-      over: over
+    data: {
+      game: {
+        cell: {
+          index: 0,
+          value: 'X'
+        },
+        over: false
+      }
     }
   })
 }
 module.exports = {
-  newGame,
-  clickedCell
+  createGame,
+  updateGame
 }

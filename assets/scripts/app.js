@@ -13,8 +13,8 @@ $(() => {
   $('#sign-in').on('submit', authEvents.onSignIn)
   $('#change-password').on('submit', authEvents.onChangePassword)
   $('#sign-out').on('submit', authEvents.onSignOut)
-  $('#new-game').on('click', gameEvents.onNewGame)
+  $('#new-game').on('click', gameEvents.onCreateGame)
   $('.box').hide()
-  $('.box').on('click', gameEvents.onGameBoardClick)
+  $('.box').on('click', gameEvents.onUpdateGame)
   // your JS code goes here
 })

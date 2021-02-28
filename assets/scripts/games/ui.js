@@ -1,22 +1,27 @@
 const store = require('../store')
 
-const onNewGameSuccess = function (response) {
+const onCreateGameSuccess = function (response) {
   $('#message').text('New Game Started')
   store.game = response.game
+  store.player = 'X'
 }
-const onNewGameFailure = function (response) {
+
+const onCreateGameFailure = function (response) {
   $('#message').text('New Game, try again')
 }
-const onClickedCellSuccess = function (response) {
+const onUpdateGameSuccess = function (response) {
   $('#message').text('Nice move!')
   store.game = response.game
+  if (store.player === 'X') store.player = 'O'
+  else store.player = 'X'
 }
-const onClickedCellFailure = function (response) {
+
+const onUpdateGameFailure = function (response) {
   $('#message').text('Move not available, here is your error ' + 'message')
 }
 module.exports = {
-  onNewGameSuccess,
-  onNewGameFailure,
-  onClickedCellSuccess,
-  onClickedCellFailure
+  onCreateGameSuccess,
+  onCreateGameFailure,
+  onUpdateGameSuccess,
+  onUpdateGameFailure
 }
