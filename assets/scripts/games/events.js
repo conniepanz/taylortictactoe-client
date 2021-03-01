@@ -4,7 +4,6 @@ const store = require('../store')
 // const getFormFields = require('../../../lib/get-form-fields')
 
 let gameOver = false
-const board = ['', '', '', '', '', '', '', '', '']
 let moves = 0
 let player = 'X'
 
@@ -18,21 +17,21 @@ const onCreateGame = function (event) {
 }
 
 const onCheckWinner = function (event) {
-  if (board[0] !== '' && board[0] === board[1] && board[1] === board[2]) {
+  if (store.board[0] !== '' && store.board[0] === store.board[1] && store.board[1] === store.board[2]) {
     return true
-  } else if (board[3] !== '' && board[3] === board[4] && board[4] === board[5]) {
+  } else if (store.board[3] !== '' && store.board[3] === store.board[4] && store.board[4] === store.board[5]) {
     return true
-  } else if (board[6] !== '' && board[6] === board[7] && board[7] === board[8]) {
+  } else if (store.board[6] !== '' && store.board[6] === store.board[7] && store.board[7] === store.board[8]) {
     return true
-  } else if (board[0] !== '' && board[0] === board[3] && board[3] === board[6]) {
+  } else if (store.board[0] !== '' && store.board[0] === store.board[3] && store.board[3] === store.board[6]) {
     return true
-  } else if (board[1] !== '' && board[1] === board[4] && board[4] === board[7]) {
+  } else if (store.board[1] !== '' && store.board[1] === store.board[4] && store.board[4] === store.board[7]) {
     return true
-  } else if (board[2] !== '' && board[2] === board[5] && board[5] === board[8]) {
+  } else if (store.board[2] !== '' && store.board[2] === store.board[5] && store.board[5] === store.board[8]) {
     return true
-  } else if (board[0] !== '' && board[0] === board[4] && board[4] === board[8]) {
+  } else if (store.board[0] !== '' && store.board[0] === store.board[4] && store.board[4] === store.board[8]) {
     return true
-  } else if (board[2] !== '' && board[2] === board[4] && board[4] === board[6]) {
+  } else if (store.board[2] !== '' && store.board[2] === store.board[4] && store.board[4] === store.board[6]) {
     return true
   }
   return false
@@ -43,28 +42,32 @@ const onUpdateGame = function (index, value, over) {
   console.log('what is happening')
 
   const clickedCell = event.target
+  const clickedCellIndex = $(clickedCell).data('cell-index')
   console.log($(clickedCell).data('cell-index'))
   api.updateGame(index, player, over)
     .then(response => {
-      console.log(clickedCell)
-      if (store.player === 'X') {
+      if (onCheckWinner(event) === true) {
+        $('#message').show().text('Game Over!')
+        gameOver = !gameOver
+      } if (store.player === 'X') {
+        store.board[clickedCellIndex] = 'X'
         $(clickedCell).text('X')
         $('#message').text('Nice move! Player O, your turn!')
       } if (store.player === 'O') {
+        store.board[clickedCellIndex] = 'O'
         $(clickedCell).text('O')
         $('#message').text('Nice move! Player X, your turn!')
-      } if (onCheckWinner(event) === true) {
-        $('#message').show().text('Game Over!')
-        gameOver = !gameOver
       } else {
         $('#message').text('Please pick a space that is unoccupied!')
-        setTimeout(() => {
-          $('#message').text('')
-        }, 2000)
+        console.log('why')
       }
       ui.onUpdateGameSuccess(response, index, player)
     })
     .catch(ui.onUpdateGameFailure)
+
+  //
+  //
+
   //
   //
   player = !player
